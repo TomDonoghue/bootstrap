@@ -21,6 +21,17 @@ Main functionality:
 - scipy
 - matplotlib
 
+## References
+
+These explorations were part of exploring adding estimation statistics to my work. 
+
+For some context & information on estimation statistics, see:
+
+- Editorial on estimation statistics in neuroscience:
+    - https://www.eneuro.org/content/6/4/ENEURO.0259-19.2019
+- Overview & introduction to estimation statistics:
+    - https://www.eneuro.org/content/6/4/ENEURO.0205-19.2019
+
 ## License
 
 This code is freely available for re-use / adaption / re-mixing etc - though with no guarantees of accuracy.
