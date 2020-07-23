@@ -89,9 +89,9 @@ def bootstrap_diff(vec_a, vec_b, vec_c, n_samples=5000, alpha=0.05,
     """
 
     # Calculate measured correlations of the data
-    r_ab, p_ab = corr_func(vec_a, vec_b)
-    r_ac, p_ac = corr_func(vec_a, vec_c)
-    r_bc, p_bc = corr_func(vec_b, vec_c)
+    r_ab, p_ab = func(vec_a, vec_b)
+    r_ac, p_ac = func(vec_a, vec_c)
+    r_bc, p_bc = func(vec_b, vec_c)
 
     # Calculate the difference in measures correlation between AB & AC
     r_diff = r_ab - r_ac
@@ -100,8 +100,8 @@ def bootstrap_diff(vec_a, vec_b, vec_c, n_samples=5000, alpha=0.05,
     boot_a, boot_b, boot_c = sample_bootstrap(n_samples, vec_a, vec_b, vec_c)
 
     # Compute estimates across resamples
-    corrs_ab = compute_bootstrap_estimates(boot_a, boot_b, corr_func)
-    corrs_ac = compute_bootstrap_estimates(boot_a, boot_c, corr_func)
+    corrs_ab = compute_bootstrap_estimates(boot_a, boot_b, func)
+    corrs_ac = compute_bootstrap_estimates(boot_a, boot_c, func)
 
     # Calculate differences, across bootstrap resamples
     diffs = corrs_ab - corrs_ac
