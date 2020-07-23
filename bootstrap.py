@@ -23,6 +23,19 @@ def bootstrap_corr(vec1, vec2, n_samples=5000, alpha=0.05, func=spearmanr, retur
         Function to use to compute correlations.
     return_estimates : bool, optional, default: False
         Whether to return to distribution of bootstrapped estimates.
+
+    Returns
+    -------
+    r_val : float
+        The calculated correlation coefficient.
+    p_val : float
+        The p-value of the correlation.
+        Note: this is from the correlation function, not a p-value estimated from the bootstrap.
+    cis : list of [float, float]
+        Confidence interval, estimated from the bootstrap.
+    estimates : 1d array
+        The distribution of bootstrap estimates.
+        Only returned if `return_estimates` is True.
     """
 
     # Calculate measured correlation of the data
@@ -61,6 +74,18 @@ def bootstrap_diff(vec_a, vec_b, vec_c, n_samples=5000, alpha=0.05,
         Function to use to compute correlations.
     return_estimates : bool, optional, default: False
         Whether to return to distribution of bootstrapped estimates.
+
+    Returns
+    -------
+    r_diff : float
+        The calculated difference of correlation values.
+    p_val : float
+        The p-value of the difference, calculated from the bootstrap distribution.
+    cis : list of [float, float]
+        Confidence interval, estimated from the bootstrap.
+    diff : 1d array
+        The distribution of bootstrap difference estimates.
+        Only returned if `return_estimates` is True.
     """
 
     # Calculate measured correlations of the data
@@ -84,8 +109,8 @@ def bootstrap_diff(vec_a, vec_b, vec_c, n_samples=5000, alpha=0.05,
     # Compute confidence intervals from distribution of differences
     cis = compute_cis(diffs, alpha)
 
-    # Calculate the p-value of the
-    _, p_val = compute_pvalue(r_diff, cis)
+    # Calculate the p-value of the difference from the bootstrap distribution
+    p_val = compute_pvalue(diffs)
 
     if return_estimates:
         return r_diff, p_val, cis, diffs
@@ -168,35 +193,36 @@ def compute_cis(estimates, alpha):
     return lower, upper
 
 
-def compute_pvalue(diff, cis, z_val=1.96):
-    """Compute the p-value of a difference measure, from bootstraped CI's.
+def compute_pvalue(estimates, test_val=0):
+    """Compute the empirical p-value from a bootstrapped distribution.
 
     Parameters
     ----------
-    diff : float
-        Measured difference between measures, to test for significance.
-    cis : list of [float, float]
-        xx
-    z_val : float, default: 1.96
-        Z-value to use, corresponding to the confidence interval value.
+    value : float
+        Measured value, to test for significance.
+    estimates : 1d array
+        Distribution of estimates from the bootstrap sample.
+    test_val : float
+        Hypothesis value for the the distribution to test against.
+
+    Returns
+    -------
+    p_val : float
+        Estimated p-value, computed from the bootstrap distribution.
 
     Notes
     -----
-    - Default z-val of 1.96 assumes CI's at 95%.
-    - Implementation from https://www.bmj.com/content/343/bmj.d2304
-
-        If the upper and lower limits of a 95% CI are u and l respectively:
-        1) calculate the standard error: SE = (u − l)/(2×1.96)
-        2) calculate the test statistic: z = Est/SE
-        3) calculate the P value2: P = exp(−0.717×z − 0.416×z2).
+    By default, this computes a two-sided comparison against null hypothesis of 0.
     """
 
-    std_error = (cis[1] - cis[0]) / (2 * z_val)
-    test_stat = diff / std_error
+    # Calculate empirical p: proportion of estimates below threshold value
+    sorted_estimates = np.sort(estimates)
+    p_value = sum(sorted_estimates < test_val) / len(sorted_estimates)
 
-    p_val = np.exp(-0.717 * np.abs(test_stat) - 0.416 * test_stat**2)
+    # Make two sided
+    p_value = 2 * np.min([p_value, 1-p_value])
 
-    return test_stat, p_val
+    return p_value
 
 
 def plot_bootstrap(values, cis=None):
