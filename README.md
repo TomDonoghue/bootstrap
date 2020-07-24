@@ -8,18 +8,35 @@ This repo collects some code for doing bootstrapping, primarily for computing co
 
 Main functionality:
 - using bootstrapping to estimate confidence intervals correlation measures
-- compare the difference between correlations, using bootstrapping, confidence intervals, and estimated p-values
+- use bootstrapping to compare the differences of measures between groups
+    - computing confidence intervals and estimated p-values of difference measures
 
 ## Organization
 
-- bootstrap.py: a collection of function for basic bootstrapping estimations
-- bootstrap-corr.ipynb: a notebook which steps through the bootstrapping
+- `bootstrap/`: a collection of function for basic bootstrapping estimations
+- `bootstrap-corr.ipynb`: a notebook which steps through available functionality
 
 ## Requirements
 
-- numpy
-- scipy
-- matplotlib
+`bootstrap` is written in Python, and requires Python >= 3.6
+
+It has the following dependencies.
+
+- [numpy](https://github.com/numpy/numpy)
+- [scipy](https://github.com/scipy/scipy)
+- [matplotlib](https://github.com/matplotlib/matplotlib)
+
+## Installation
+
+The `bootstrap` module can be installed with `pip`.
+
+To clone and install this module, you can do:
+
+```
+$ git clone https://github.com/TomDonoghue/bootstrap
+$ cd bootstrap
+$ pip install .
+```
 
 ## References
 
