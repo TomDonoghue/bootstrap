@@ -155,7 +155,7 @@ def compute_bootstrap_estimates(x, y, func):
     x, y : 2d arrays
         Resampled data to compute estimates from, with shape: [n_resamples, n_values].
     func : callable
-        Function to calculate esimate between data.
+        Function to calculate estimate between data.
 
     Returns
     -------
@@ -184,7 +184,7 @@ def compute_cis(estimates, alpha):
     Returns
     -------
     lower, upper : float
-        Computd confidence intervals.
+        Computed confidence intervals.
     """
 
     lower = np.quantile(estimates, alpha / 2.)
@@ -226,7 +226,7 @@ def compute_pvalue(estimates, test_val=0):
 
 
 def plot_bootstrap(values, cis=None):
-    """Plot a histogram of bootstraped estimates.
+    """Plot a histogram of bootstrapped estimates.
 
     Parameters
     ----------
