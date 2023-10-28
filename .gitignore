@@ -3,3 +3,8 @@
 
 # Ignore cache
 *__pycache__/*
+
+# Ignore source release files
+/dist/*
+/*.egg-info/*
+/build/*
