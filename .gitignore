@@ -2,7 +2,10 @@
 *.ipynb_checkpoints*
 
 # Ignore cache
-*__pycache__/*
+*__pycache__/
+
+# Ignore coverage file
+.coverage
 
 # Ignore source release files
 /dist/*
