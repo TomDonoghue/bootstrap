@@ -18,7 +18,7 @@ Main functionality:
 
 ## Requirements
 
-`bootstrap` is written in Python, and requires Python >= 3.6
+`bootstrap` is written in Python, and requires Python >= 3.6.
 
 It has the following dependencies.
 
@@ -40,7 +40,7 @@ $ pip install .
 
 ## References
 
-These explorations were part of exploring adding estimation statistics to my work. 
+These explorations were part of exploring adding estimation statistics to my work.
 
 For some context & information on estimation statistics, see:
 

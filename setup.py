@@ -16,7 +16,7 @@ setup(
     version = __version__,
     description = 'Basic bootstraps for statistics.',
     long_description = 'Basic bootstraps for statistics.',
-    python_requires = '>=3.5',
+    python_requires = '>=3.6',
     author = 'Thomas Donoghue',
     author_email = 'tdonoghue.research@gmail.com',
     url = 'https://github.com/TomDonoghue/bootstrap',
