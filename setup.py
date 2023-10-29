@@ -19,9 +19,10 @@ setup(
     python_requires = '>=3.5',
     author = 'Thomas Donoghue',
     author_email = 'tdonoghue.research@gmail.com',
-    url = 'https://github.com/TomDonoghue/bootstraps',
+    url = 'https://github.com/TomDonoghue/bootstrap',
     packages = find_packages(),
     license = 'MIT License',
     install_requires = install_requires,
+    tests_require = ['pytest'],
     platforms = 'any',
 )
