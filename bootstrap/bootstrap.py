@@ -31,7 +31,7 @@ def bootstrap_corr(vec1, vec2, n_samples=5000, alpha=0.05, func=spearmanr, retur
     p_val : float
         The p-value of the correlation.
         Note: this is from the correlation function, not a p-value estimated from the bootstrap.
-    cis : list of [float, float]
+    cis : tuple of (float, float)
         Confidence interval, estimated from the bootstrap.
     estimates : 1d array
         The distribution of bootstrap estimates.
@@ -110,7 +110,7 @@ def bootstrap_diff(vec_a, vec_b, vec_c, n_samples=5000, alpha=0.05,
     cis = compute_cis(diffs, alpha)
 
     # Calculate the p-value of the difference from the bootstrap distribution
-    p_val = compute_pvalue(diffs)
+    p_val = compute_pvalue(0, diffs)
 
     if return_estimates:
         return r_diff, p_val, cis, diffs
@@ -193,17 +193,15 @@ def compute_cis(estimates, alpha):
     return lower, upper
 
 
-def compute_pvalue(estimates, test_val=0):
+def compute_pvalue(value, estimates):
     """Compute the empirical p-value from a bootstrapped distribution.
 
     Parameters
     ----------
     value : float
-        Measured value, to test for significance.
+        Value to test against the bootstrapped estimates.
     estimates : 1d array
         Distribution of estimates from the bootstrap sample.
-    test_val : float
-        Hypothesis value for the the distribution to test against.
 
     Returns
     -------
@@ -215,12 +213,12 @@ def compute_pvalue(estimates, test_val=0):
     By default, this computes a two-sided comparison against null hypothesis of 0.
     """
 
-    # Calculate empirical p: proportion of estimates below threshold value
+    # Calculate empirical p: proportion of estimates below test value
     sorted_estimates = np.sort(estimates)
-    p_value = sum(sorted_estimates < test_val) / len(sorted_estimates)
+    p_value = sum(sorted_estimates < value) / len(sorted_estimates)
 
     # Make two sided
-    p_value = 2 * np.min([p_value, 1-p_value])
+    p_value = 2 * np.min([p_value, 1 - p_value])
 
     return p_value
 
