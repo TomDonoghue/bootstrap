@@ -1,19 +1,19 @@
 # Bootstraps
 
-Basic bootstrapping approaches for estimation statistics, in Python.
+Basic bootstrapping approaches for estimation statistics.
 
 ## Overview
 
 This repo collects some code for doing bootstrapping, primarily for computing confidence intervals, and for correlation measures.
 
 Main functionality:
-- using bootstrapping to estimate confidence intervals correlation measures
-- use bootstrapping to compare the differences of measures between groups
+- using bootstrapping to estimate confidence intervals for correlation measures
+- use bootstrapping to compare differences of measures between groups
     - computing confidence intervals and estimated p-values of difference measures
 
 ## Organization
 
-- `bootstrap/`: a collection of function for basic bootstrapping estimations
+- `bootstrap/`: a collection of functions for basic bootstrapping estimates
 - `bootstrap-corr.ipynb`: a notebook which steps through available functionality
 
 ## Requirements
@@ -39,8 +39,6 @@ $ pip install .
 ```
 
 ## References
-
-These explorations were part of exploring adding estimation statistics to my work.
 
 For some context & information on estimation statistics, see:
 
