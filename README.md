@@ -1,10 +1,10 @@
-# Bootstraps
+# Bootstrap
 
 Basic bootstrapping approaches for estimation statistics.
 
 ## Overview
 
-This repo collects some code for doing bootstrapping, primarily for computing confidence intervals, and for correlation measures.
+This repository contains code for doing bootstrapping, primarily for computing confidence intervals, and for correlation measures.
 
 Main functionality:
 - using bootstrapping to estimate confidence intervals for correlation measures
@@ -12,6 +12,8 @@ Main functionality:
     - computing confidence intervals and estimated p-values of difference measures
 
 ## Organization
+
+This repository contains the following:
 
 - `bootstrap/`: a collection of functions for basic bootstrapping estimates
 - `bootstrap-corr.ipynb`: a notebook which steps through available functionality
