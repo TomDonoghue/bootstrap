@@ -26,15 +26,15 @@ Main functionality:
 
 - using bootstrapping to estimate confidence intervals for correlation measures
 - use bootstrapping to compare differences of measures between groups
-    - computing confidence intervals and estimated p-values of difference measures
+- computing confidence intervals and estimated p-values of difference measures
 
 Organization
 ------------
 
 This repository contains the following:
 
-- `bootstrap/`: a collection of functions for basic bootstrapping estimates
-- `bootstrap-corr.ipynb`: a notebook which steps through available functionality
+- ``bootstrap/``: a collection of functions for basic bootstrapping estimates
+- ``bootstrap-corr.ipynb``: a notebook which steps through available functionality
 
 Requirements
 ------------
@@ -54,21 +54,19 @@ The `bootstrap` module can be installed with `pip`.
 
 To clone and install this module, you can do:
 
-```
-$ git clone https://github.com/TomDonoghue/bootstrap
-$ cd bootstrap
-$ pip install .
-```
+.. code-block:: shell
+
+    $ git clone https://github.com/TomDonoghue/bootstrap
+    $ cd bootstrap
+    $ pip install .
 
 References
 ----------
 
 For some context & information on estimation statistics, see:
 
-- Editorial on estimation statistics in neuroscience:
-    - https://www.eneuro.org/content/6/4/ENEURO.0259-19.2019
-- Overview & introduction to estimation statistics:
-    - https://www.eneuro.org/content/6/4/ENEURO.0205-19.2019
+- This `editorial <https://www.eneuro.org/content/6/4/ENEURO.0259-19.2019>`_ on estimation statistics in neuroscience:
+- This `overview and introduction <https://www.eneuro.org/content/6/4/ENEURO.0205-19.2019>`_ to estimation statistics:
 
 License
 -------
