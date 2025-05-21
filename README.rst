@@ -39,7 +39,7 @@ This repository contains the following:
 Requirements
 ------------
 
-`bootstrap` is written in Python, and requires Python >= 3.6.
+`bootstrap` is written in Python, and requires Python >= 3.7.
 
 It has the following dependencies:
 
